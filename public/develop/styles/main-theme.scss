@@ -1,0 +1,124 @@
+// All Our Dependencies
+@import "../libs/bootstrap/css/bootstrap.css";
+body {
+  padding: 0;
+  margin: 0;
+}
+$calculatorWidth: 400px;
+$buttonSection: 300px;
+$actionSection: $calculatorWidth - $buttonSection;
+$fontSize: 24px;
+$buttonSize: 60px;
+
+$orange_bg: darkorange;
+$gray_bg: lightgray;
+
+$orange_border: orangered;
+$gray_border: #999999;
+
+$headerHight: 50px;
+$paddingSize: 30px;
+
+h1 {
+  margin-bottom: 30px;
+}
+.wrapper {
+  padding: 0 $paddingSize;
+}
+header {
+  padding: 0 $paddingSize;
+  background: #333;
+  height: $headerHight;
+  line-height: $headerHight;
+  a {
+    color: $gray_bg;
+    margin-right: 50px;
+  }
+  a:hover {
+    color: #fff;
+  }
+}
+footer {
+  margin-top: 40px;
+  padding: 0 $paddingSize;
+  text-align: center;
+}
+.calculator {
+  font-size: 0;
+  width: $buttonSize * 4;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: $gray_border 0px 0px 40px ;
+  background-color: $gray_bg;
+}
+.calculator__buttons-box {
+  float: left;
+  width: $buttonSize * 3;
+}
+.clear {
+  clear: both;
+}
+.calculator__operations-box {
+  float: right;
+  width: $buttonSize;
+  font-size: $fontSize;
+  border-right: $orange_bg solid 1px;
+}
+.calculator__display {
+  font-size: $fontSize;
+  float: left;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #666;
+  color: #ffffff;
+  text-align: right;
+}
+
+.button {
+  width: $buttonSize;
+  height: $buttonSize;
+  font-size: $fontSize;
+  text-align: center;
+  line-height: $buttonSize;
+  display: inline-block;
+  cursor: pointer;
+}
+.button-orange {
+  border-bottom: $orange_border solid 1px;
+  background-color: $orange_bg;
+}
+.button-gray {
+  border-left: $gray_border solid 1px;
+  border-bottom: $gray_border solid 1px;
+  background-color: $gray_bg;
+}
+.button-big {
+  width: $buttonSize * 2;
+  border-bottom: $gray_border solid 1px;
+}
+.bottom-row {
+  text-align: right;
+}
+.bottom-row {
+  .button-orange {
+   border-left: $orange_border solid 1px;
+  }
+}
+.button-orange:active {
+  box-shadow: inset $orange_bg - #333 0px 0px 20px ;
+}
+.button-gray:active {
+  box-shadow: inset $gray_bg - #333 0px 0px 20px ;
+}
+.history_list {
+  list-style: none;
+  margin-top: 20px;
+  width: 700px;
+  font-size: $fontSize - 8px;
+  line-height: 40px;
+  .expression {
+    background: yellow;
+    padding: 5px;
+    font-weight: bold;
+  }
+}

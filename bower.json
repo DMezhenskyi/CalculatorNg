@@ -1,0 +1,26 @@
+{
+  "name": "Biddi-test",
+  "version": "1.0.0",
+  "authors": [
+    "mezhik91 <mezhik91@gmail.com>"
+  ],
+  "description": "Simple calculator for Biddi test",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "bootstrap": "3.*",
+    "angular": "~1.4.0",
+    "angular-resource": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-cookies": "~1.4.0",
+    "a0-angular-storage": "*"
+  }
+}

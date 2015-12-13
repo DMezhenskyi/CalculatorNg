@@ -16,18 +16,21 @@ $gray_bg: lightgray;
 $orange_border: orangered;
 $gray_border: #999999;
 
+$darkBg: #423D3D;
+
 $headerHight: 50px;
 $paddingSize: 30px;
 
 h1 {
   margin-bottom: 30px;
+  text-align: center;
 }
 .wrapper {
   padding: 0 $paddingSize;
 }
 header {
   padding: 0 $paddingSize;
-  background: #333;
+  background: $darkBg;
   height: $headerHight;
   line-height: $headerHight;
   a {
@@ -50,6 +53,9 @@ footer {
   position: relative;
   box-shadow: $gray_border 0px 0px 40px ;
   background-color: $gray_bg;
+  user-select: none;
+  -webkit-user-select: none;
+  -ьщя-user-select: none;
 }
 .calculator__buttons-box {
   float: left;
@@ -69,9 +75,13 @@ footer {
   float: left;
   width: 100%;
   padding: 20px 10px;
-  background-color: #666;
+  background-color: $darkBg;
   color: #ffffff;
   text-align: right;
+  overflow: hidden;
+  user-select: text;
+  -webkit-user-select: text;
+  -ьщя-user-select: text;
 }
 
 .button {
@@ -83,17 +93,29 @@ footer {
   display: inline-block;
   cursor: pointer;
 }
+
 .button-orange {
   border-bottom: $orange_border solid 1px;
   background-color: $orange_bg;
+  &:hover {
+    background-color: $orange_bg + #111111;
+  }
+}
+.button-big-orange {
+  border-bottom: solid $orange_border 1px;
 }
 .button-gray {
   border-left: $gray_border solid 1px;
   border-bottom: $gray_border solid 1px;
   background-color: $gray_bg;
+  &:hover {
+    background-color: $gray_bg + #111111;
+  }
 }
-.button-big {
+.button-big-gray, .button-big-orange {
   width: $buttonSize * 2;
+}
+.button-big-gray {
   border-bottom: $gray_border solid 1px;
 }
 .bottom-row {
@@ -112,11 +134,21 @@ footer {
 }
 .history_list {
   list-style: none;
-  margin-top: 20px;
-  width: 700px;
+  width: 80%;
+  max-width: 1024px;
   font-size: $fontSize - 8px;
   line-height: 40px;
+  margin: 20px auto;
+  .history_item {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .history_item:nth-child(even) {
+    text-align: right;
+  }
   .expression {
+
     background: yellow;
     padding: 5px;
     font-weight: bold;

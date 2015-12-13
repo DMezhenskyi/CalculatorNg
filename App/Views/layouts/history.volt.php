@@ -15,16 +15,16 @@
     <h1>History</h1>
     <section class="history_list">
         <?php foreach ($history as $h) { ?>
-            <div>Calculate reguest #<strong><?php echo $h->id; ?>: </strong> <span class="expression"><?php echo $h->history_string; ?></span></div>
+            <div class="history_item">Calculate reguest #<strong><?php echo $h->id; ?>: </strong> <span class="expression"><?php echo $h->history_string; ?></span></div>
         <?php } ?>
-        <div class="clear"></div>
     </section>
 
 
 </div>
 
 <footer class="footer">
-   &copy; Copyright 2015, All rights reserved.
+   &copy; Copyright 2015, All rights reserved. <br/>
+    <p>Designed with AngularJS, Volt and Phalcon 2.</p>
 </footer>
 <script type="text/javascript" src="/public/production/libs/angular/angular.concat.js"></script>
 <script type="text/javascript" src="/public/production/js/app.js"></script>

@@ -3,7 +3,9 @@
 
     angular
         .module('calculator', [])
-        .config(config)
+        .config(['$interpolateProvider', function ($interpolateProvider) {
+            $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+        }])
         .constant('API_URL', window.location)
         .controller('CalculatorCtrl', function($scope, MathService, ServerRequest) {
 
@@ -22,11 +24,13 @@
                     $scope.reset();
                 }
                 if($scope.items.isFirstValue === true) {
-                    $scope.items.firstValue === '0' ?
-                        $scope.items.firstValue = val : $scope.items.firstValue += val;
+                    $scope.items.firstValue === '0'
+                        ? $scope.items.firstValue = val
+                        : $scope.items.firstValue += val;
                 } else {
-                    $scope.items.secondValue === '0' ?
-                        $scope.items.secondValue = val : $scope.items.secondValue += val;
+                    $scope.items.secondValue === '0'
+                        ? $scope.items.secondValue = val
+                        : $scope.items.secondValue += val;
                 }
             }
 
@@ -39,6 +43,19 @@
                     result: ''
                 };
 
+            }
+
+            $scope.procentAction = function () {
+
+                if ($scope.items.isFirstValue === false) {
+                    if($scope.items.secondValue !== '') {
+                        $scope.showResult()
+                    } else {
+                        $scope.items.action = null;
+                        $scope.items.isFirstValue = false;
+                    }
+                }
+                $scope.items.firstValue = String(parseFloat($scope.items.firstValue) * 0.01);
             }
 
             $scope.plusAction = function() {
@@ -56,6 +73,7 @@
                 $scope.items.action = '*';
             }
 
+
             $scope.devideAction = function() {
                 $scope.items.isFirstValue = false;
                 $scope.items.action = '/';
@@ -63,18 +81,18 @@
 
             $scope.setDot = function() {
                 if ($scope.items.isFirstValue === true) {
-                    if ($scope.items.firstValue.substr(-1) !== '.' && $scope.items.firstValue !== '') {
-                        $scope.items.firstValue += '.'
-                    }
+                    if ($scope.items.firstValue.indexOf('.') === -1 && $scope.items.firstValue !== '')
+                        $scope.items.firstValue += '.';
                 } else {
-                    if ($scope.items.secondValue.substr(-1) !== '.' && $scope.items.secondValue !== '') {
-                        $scope.items.secondValue += '.'
-                    }
+                    if ($scope.items.secondValue.indexOf('.') === -1 && $scope.items.secondValue !== '')
+                        $scope.items.secondValue += '.';
                 }
             }
 
             $scope.showResult = function() {
-                var result = MathService.calculate($scope.items.firstValue, $scope.items.secondValue, $scope.items.action)
+                var result = MathService.calculate(
+                    $scope.items.firstValue, $scope.items.secondValue, $scope.items.action
+                )
 
                 if (result !== false) {
                     ServerRequest.saveInHistory(
@@ -89,16 +107,19 @@
                 }
 
             }
+
         })
         .service('MathService', [function () {
 
             function division (a, b) {
-                if (b === 0)
+                if (b === 0) {
                     throw Error('You can not divide by zero!');
+                }
                 return a / b;
             }
 
             this.calculate = function (a, b, action) {
+
                 try {
                     if (action === null)
                         throw Error('You have to chose an action!');
@@ -131,6 +152,7 @@
             };
         }])
         .service('ServerRequest', ['$http','API_URL', function ($http, API_URL) {
+
             this.saveInHistory = function (str) {
                 return $http({
                     method: 'POST',
@@ -141,12 +163,6 @@
                     return false;
                 });
             }
+
         }]);
-
-    config.$inject = ['$interpolateProvider'];
-
-    function config($interpolateProvider) {
-        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    }
-
 })();

@@ -1,2 +1,15 @@
 # Simple calculator
-It has to work imediatly. Don't forget create database with file database.sql in the root folder and change connections properties in App/Config/config.ini.
+
+## Tools and langueges
+
+ - The front-end of application designed with AngularJS;
+ - Backend with Phalcon 2 php framework.
+ 
+
+##Installation
+- Clone files to your machine;
+- Run in the terminal: sudo npm install;
+- Run in the terminal: bower install;
+- Create database using "database.sql" file;
+- Change database connections properties in App/Config/config.ini.
+

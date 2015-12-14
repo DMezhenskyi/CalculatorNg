@@ -7,7 +7,12 @@
             $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
         }])
         .constant('API_URL', window.location)
-        .controller('CalculatorCtrl', function($scope, MathService, ServerRequest) {
+        .controller('CalculatorCtrl', [
+                            '$scope',
+                            'MathService',
+                            'ServerRequest',
+
+            function($scope, MathService, ServerRequest) {
 
             $scope.items = {
                 firstValue: '0',
@@ -45,7 +50,7 @@
 
             }
 
-            $scope.procentAction = function () {
+            $scope.percentAction = function () {
 
                 if ($scope.items.isFirstValue === false) {
                     if($scope.items.secondValue !== '') {
@@ -55,7 +60,14 @@
                         $scope.items.isFirstValue = false;
                     }
                 }
+                var oldValue = $scope.items.firstValue;
                 $scope.items.firstValue = String(parseFloat($scope.items.firstValue) * 0.01);
+
+                ServerRequest.saveInHistory(
+                    oldValue + ' * ' + '0.01' +
+                    ' '+ $scope.items.secondValue + ' = ' + $scope.items.firstValue
+                );
+                var oldValue = null;
             }
 
             $scope.plusAction = function() {
@@ -74,7 +86,7 @@
             }
 
 
-            $scope.devideAction = function() {
+            $scope.divideAction = function() {
                 $scope.items.isFirstValue = false;
                 $scope.items.action = '/';
             }
@@ -108,7 +120,7 @@
 
             }
 
-        })
+        }])
         .service('MathService', [function () {
 
             function division (a, b) {

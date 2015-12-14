@@ -19,11 +19,8 @@ class HistoryController extends Phalcon\Mvc\Controller
 
     public function showHistoryAction()
     {
-            $history = History::find();
-            return $this->view->setVars(
-                    array(
-                        'history' => $history,
-                    )
-                )->render('layouts', 'history');
+            $history = History::find( array( "order" => "id DESC" ) );
+            return $this->view->setVars( array('history' => $history) )
+                              ->render('layouts', 'history');
     }
 }

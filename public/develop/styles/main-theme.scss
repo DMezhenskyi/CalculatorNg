@@ -13,7 +13,7 @@ $buttonSize: 60px;
 $orange_bg: darkorange;
 $gray_bg: lightgray;
 
-$orange_border: orangered;
+$orange_border: #AF6725;
 $gray_border: #999999;
 
 $darkBg: #423D3D;
@@ -55,7 +55,7 @@ footer {
   background-color: $gray_bg;
   user-select: none;
   -webkit-user-select: none;
-  -ьщя-user-select: none;
+  -moz-user-select: none;
 }
 .calculator__buttons-box {
   float: left;
@@ -68,7 +68,6 @@ footer {
   float: right;
   width: $buttonSize;
   font-size: $fontSize;
-  border-right: $orange_bg solid 1px;
 }
 .calculator__display {
   font-size: $fontSize;
@@ -81,7 +80,7 @@ footer {
   overflow: hidden;
   user-select: text;
   -webkit-user-select: text;
-  -ьщя-user-select: text;
+  -moz-user-select: text;
 }
 
 .button {
@@ -143,14 +142,20 @@ footer {
     width: 40%;
     display: inline-block;
     vertical-align: top;
+    padding: 5px;
   }
   .history_item:nth-child(even) {
     text-align: right;
   }
   .expression {
-
+    padding: 0 5px;
+    display: inline-block;
+    vertical-align: top;
     background: yellow;
-    padding: 5px;
     font-weight: bold;
   }
+}
+.empty {
+  color: $gray_border;
+  text-align: center;
 }

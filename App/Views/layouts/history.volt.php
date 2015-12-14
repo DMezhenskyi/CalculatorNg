@@ -12,13 +12,19 @@
     <a href="/history/show">History</a>
 </header>
 <div class="wrapper">
+
     <h1>History</h1>
     <section class="history_list">
-        <?php foreach ($history as $h) { ?>
-            <div class="history_item">Calculate reguest #<strong><?php echo $h->id; ?>: </strong> <span class="expression"><?php echo $h->history_string; ?></span></div>
+        <?php if ($this->length($history) === 0) { ?>
+            <p class="empty">History is empty.</p>
+        <?php } else { ?>
+            <?php foreach ($history as $h) { ?>
+                <div class="history_item">Calculate reguest #<strong><?php echo $h->id; ?>: </strong>
+                    <span class="expression"><?php echo $h->history_string; ?></span>
+                </div>
+            <?php } ?>
         <?php } ?>
     </section>
-
 
 </div>
 

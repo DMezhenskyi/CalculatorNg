@@ -29,8 +29,8 @@
             <div class="operations-button button button-orange" ng-click="multiplyAction()">*</div>
         </div>
         <div class="bottom-row">
-            <div class="operations-button button button-orange" ng-click="devideAction()">/</div>
-            <div class="operations-button button button-orange button-big-orange" ng-click="procentAction()">%</div>
+            <div class="operations-button button button-orange" ng-click="divideAction()">&#247;</div>
+            <div class="operations-button button button-orange button-big-orange" ng-click="percentAction()">%</div>
 
             <div class="operations-button button button-orange" ng-click="setDot()">.</div>
 

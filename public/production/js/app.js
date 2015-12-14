@@ -50,24 +50,28 @@
 
             }
 
+            function getPersentFromValue () {
+                var percentVal = '0.01';
+                $scope.items.secondValue = percentVal;
+                $scope.multiplyAction();
+                $scope.showResult();
+                }
+
             $scope.percentAction = function () {
 
                 if ($scope.items.isFirstValue === false) {
                     if($scope.items.secondValue !== '') {
-                        $scope.showResult()
+                        $scope.showResult();
+                        $scope.items.firstValue = $scope.items.result;
+                        $scope.items.isFirstValue = true;
+                        $scope.percentAction();
                     } else {
-                        $scope.items.action = null;
-                        $scope.items.isFirstValue = false;
+                        getPersentFromValue ();
                     }
+                } else {
+                    getPersentFromValue ();
                 }
-                var oldValue = $scope.items.firstValue;
-                $scope.items.firstValue = String(parseFloat($scope.items.firstValue) * 0.01);
 
-                ServerRequest.saveInHistory(
-                    oldValue + ' * ' + '0.01' +
-                    ' '+ $scope.items.secondValue + ' = ' + $scope.items.firstValue
-                );
-                var oldValue = null;
             }
 
             $scope.plusAction = function() {

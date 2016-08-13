@@ -104,6 +104,9 @@
                         $scope.items.secondValue += '.';
                 }
             }
+            $scope.em = function function_name(argument) {
+                // body...
+            }
 
             $scope.showResult = function() {
                 var result = MathService.calculate(

@@ -10,7 +10,7 @@
         .controller('CalculatorCtrl', [
                             '$scope',
                             'MathService',
-                            'ServerRequest',
+                            'ServerRequest'
 
             function($scope, MathService, ServerRequest) {
 
@@ -103,6 +103,9 @@
                     if ($scope.items.secondValue.indexOf('.') === -1 && $scope.items.secondValue !== '')
                         $scope.items.secondValue += '.';
                 }
+            }
+            $scope.justTest = function newFunc() {
+                // body...
             }
 
             $scope.showResult = function() {

@@ -1,0 +1,7 @@
+###PhPStorm###
+
+.idea/
+
+/bower_components
+/node_modules
+/App/Config/*

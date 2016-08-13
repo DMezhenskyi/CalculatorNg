@@ -105,7 +105,8 @@
                 }
             }
             $scope.em = function function_name(argument) {
-                console.log(argument);
+                var a = 'dd';
+                console.log(a);
             }
 
             $scope.showResult = function() {

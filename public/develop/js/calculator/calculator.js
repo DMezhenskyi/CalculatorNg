@@ -105,7 +105,6 @@
                 }
             }
             $scope.em = function function_name(argument) {
-                // body...
             }
 
             $scope.showResult = function() {

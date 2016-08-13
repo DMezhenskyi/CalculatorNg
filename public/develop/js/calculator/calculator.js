@@ -105,7 +105,6 @@
                 }
             }
             $scope.justTest = function newFunc() {
-                // body...
             }
 
             $scope.showResult = function() {

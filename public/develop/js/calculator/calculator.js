@@ -105,6 +105,7 @@
                 }
             }
             $scope.em = function function_name(argument) {
+                console.log(argument);
             }
 
             $scope.showResult = function() {
